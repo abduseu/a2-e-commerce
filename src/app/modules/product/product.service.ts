@@ -16,8 +16,18 @@ const getOneProductDB = async(productId: string) =>{
     return result
 }
 
+const updateProdcutDB = async(productId: string, updateData: Partial<TProduct>)=>{
+    const result = await MProduct.findOneAndUpdate(
+        { _id: productId },
+        { $set: updateData },
+        { new: true }
+    )
+    return result
+}
+
 export const ProductServices = {
   createProductDB,
   getProductDB,
-  getOneProductDB
+  getOneProductDB,
+  updateProdcutDB,
 };
