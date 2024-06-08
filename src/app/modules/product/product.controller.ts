@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { ProductServices } from "./product.service";
 
+//create
 const createProduct = async (req: Request, res: Response) => {
   try {
     //request
@@ -24,6 +25,7 @@ const createProduct = async (req: Request, res: Response) => {
   }
 };
 
+//get all product
 const getProduct = async (req: Request, res: Response) => {
   try {
     //service
@@ -44,7 +46,32 @@ const getProduct = async (req: Request, res: Response) => {
   }
 };
 
+//get single product
+const getOneProduct = async (req: Request, res: Response) => {
+  try {
+    //request
+    const { productId } = req.params;
+
+    //service
+    const result = await ProductServices.getOneProductDB(productId);
+
+    //response
+    res.status(200).json({
+      success: true,
+      message: "Product fetched successfully!",
+      data: result,
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: "Product fetched failed!",
+      data: error,
+    });
+  }
+};
+
 export const ProductController = {
   createProduct,
   getProduct,
+  getOneProduct,
 };
