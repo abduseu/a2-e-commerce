@@ -25,9 +25,15 @@ const updateProdcutDB = async(productId: string, updateData: Partial<TProduct>)=
     return result
 }
 
+const deleteProductDB = async(productId: string)=>{
+  const result = await MProduct.findOneAndDelete({ _id: productId })
+  return result
+}
+
 export const ProductServices = {
   createProductDB,
   getProductDB,
   getOneProductDB,
   updateProdcutDB,
+  deleteProductDB,
 };
