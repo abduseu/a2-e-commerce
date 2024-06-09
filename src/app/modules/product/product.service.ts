@@ -33,7 +33,7 @@ const deleteProductDB = async (productId: string) => {
   return result;
 };
 
-const searchProductDB = async (searchTerm: any) => {
+const searchProductDB = async (searchTerm: string) => {
   const searchQuery = {
     $or: [                                                     //find if any condition matches
       { name: { $regex: searchTerm, $options: "i" } },         //case insensetive
