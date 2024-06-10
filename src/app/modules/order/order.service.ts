@@ -11,7 +11,13 @@ const getOrderDB = async () => {
   return result;
 };
 
+const getOrderByEmailDB = async(email: string) =>{
+    const result = await MOrder.find({ email: email })
+    return result
+}
+
 export const OrderServices = {
   createOrderDB,
   getOrderDB,
+  getOrderByEmailDB,
 };
