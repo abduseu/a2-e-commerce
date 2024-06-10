@@ -5,6 +5,7 @@ const router = express.Router()
 
 //All order routes
 router.post('/', OrderControllers.createOrder)
+router.get('/', OrderControllers.getOrder)
 
 
 export const OrderRoutes = router
